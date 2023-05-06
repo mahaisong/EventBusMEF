@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="7.0.0-rc.1.22426.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MEFIInterface\MEFIInterface.csproj" />
+    <ProjectReference Include="..\TestEventBus2\TestEventBus2.csproj" />
+    <ProjectReference Include="..\TestModelLib\TestModelLib.csproj" />
+  </ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy $(TargetPath) $(SolutionDir)LearnMEF\LearnMEFConsoleMain\bin\Debug\net6.0\$(TargetFileName) /y" />
+	</Target>
+
+</Project>
